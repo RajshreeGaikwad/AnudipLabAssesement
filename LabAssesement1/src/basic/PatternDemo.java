@@ -12,23 +12,26 @@ public class PatternDemo {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner obj=new Scanner(System.in);
-		int num=obj.nextInt();
-		System.out.println(" priting the pattern");
-		 for (int i=1;i<=num;i++)
-		 {
-			 for (int j=1;j<=i;j++)
-			 {
-				 System.out.print(j +" ");
-	
-		}
-		
-		for (int k=i-1;k>=1;k--)
+		System.out.println("please Enter the number");
+		int x=obj.nextInt();
+		if(x%4==1)
 		{
-			System.out.print(k + " ");
+			System.out.println("Emrald");
+		}
+		else if(x%4==2)
+		{
+			System.out.println("Ruby");
 			
 		}
-		System.out.println();
-		 }
+		else if(x%4==3)
+		{
+			System.out.println("Pearl");
+		
+		}
+		else if(x%4==4)
+		{
+			System.out.println("Saphire");
+		}
 		 
 		 
 	}
