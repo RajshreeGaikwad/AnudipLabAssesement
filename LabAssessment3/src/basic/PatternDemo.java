@@ -40,14 +40,6 @@ public class PatternDemo
 } //end of class PatternDemo
 
 
-/*output:- if enter number 5
-
-*
-*
-*
-*
-* * * * *
-*/
 
 
 
