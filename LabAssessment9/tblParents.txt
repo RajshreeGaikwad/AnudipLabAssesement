@@ -1,0 +1,267 @@
+/*Lab Assignment 9 (1)
+  @authorname :- Rajshree Gaikwad 
+  @Date :-8 december 2022
+  
+Question 1
+1.	create a table named tblParents in Student schema, the Create table definition will be as following(minimum 20 entry is required )
+•	parent id
+•	parents name
+•	city
+•	age
+•	annual income
+•	occupation
+•	emailid
+2.	update email id of each parents as “NA”.
+3.	count number of parents whose annual income is more than 6 lakhs.
+4.	Select parents who are living in city Ahmedabad, Delhi, Mumbai, Chennai, Banglore.
+5.	Write a SQL statement to select parent whose annual income is less than 5 lakhs other
+otherwise age is more than 45.
+*/
+
+
+
+mysql> create database Student;
+Query OK, 1 row affected (0.13 sec)
+
+mysql> use Student
+Database changed
+mysql> use Student
+Database changed
+mysql> create table tblParents(Parent_Id int primary key,Parent_Name varchar(40),City varchar(40),Age int,AnnualIncome int,Occupation varchar(25),Email_Id varchar(30));
+Query OK, 0 rows affected (0.69 sec)
+
+mysql> insert into tblParents values(101,"Sonali Gaikwad","Pune",29,15000,"Service","S_gaikwad@gmail.com");
+Query OK, 1 row affected (0.11 sec)
+
+mysql> insert into tblParents values(102,"Smita Dhivar","Mumbai",39,35000,"Designer","Dhivar_s@gmail.com");
+Query OK, 1 row affected (0.12 sec)
+
+mysql> insert into tblParents values(103,"Kiran Shah","Banglore",44,55000,"Entrepreneur","k_shah@gmail.com");
+Query OK, 1 row affected (0.07 sec)
+
+mysql> insert into tblParents values(104,"Krupa Patel","Surat",30,30000,"Beutician","K_patel@gmail.com");
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into tblParents values(105,"Mohan Singh","Shimala",34,50000,"Chef","S_mohan@gmail.com");
+Query OK, 1 row affected (0.13 sec)
+
+mysql> insert into tblParents values(106,"Vir Hattarke","Satara",40,60000,"Data scientist","V_Hattarke@gmail.com");
+Query OK, 1 row affected (0.08 sec)
+
+mysql>  insert into tblParents values(107,"Manish Nagmal","Pune",29,450000,"Manager","N_manish@gmail.com");
+Query OK, 1 row affected (0.12 sec)
+
+mysql> insert into tblParents values(108,"Surekha Ranpise","Solapur",40,400000,"Teacher","Ss_Ranpise@gmail.com");
+Query OK, 1 row affected (0.07 sec)
+
+mysql>  insert into tblParents values(109,"Vijay Vanjari","Kolhapur",35,350000,"medical Assistant","v_vijay@gmail.com");
+Query OK, 1 row affected (0.12 sec)
+
+mysql> insert into tblParents values(110,"Maya Alhat","Mumbai",37,300000,"Service","M_alhat@gmail.com");
+Query OK, 1 row affected (0.17 sec)
+
+mysql> insert into tblParents values(111,"Shruti Gawade","Banglore",49,500000,"Supervisor","G_shruti@gmail.com");
+Query OK, 1 row affected (0.09 sec)
+
+mysql> insert into tblParents values(112,"Shuruti Singhal","Delhi",28,600000,"Devloper","S_singhal@gmail.com");
+Query OK, 1 row affected (0.12 sec)
+
+mysql> insert into tblParents values(113,"Nishant Joshi","Vadodara",34,400000,"Analytics","n_joshi@gmail.com");
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into tblParents values(114,"Salman khan","Chennai",54,400000,"Actor","s_khan@gmail.com");
+Query OK, 1 row affected (0.07 sec)
+
+mysql> insert into tblParents values(115,"Shrushti Tawade","Ahmedabad",30,9000000,"Rapper","S_tawade@gmail.com");
+Query OK, 1 row affected (0.07 sec)
+
+mysql> insert into tblParents values(116,"Kumar Saanu","Delhi",60,5000000,"Singer","k_saanu@gmail.com");
+Query OK, 1 row affected (0.12 sec)
+
+mysql> insert into tblParents values(117,"Manish Paul","Ahmedabad",43,700000,"Anchor","m_paul@gmail.com");
+Query OK, 1 row affected (0.25 sec)
+
+mysql> insert into tblParents values(118,"Bharati Singh","Mumbai",45,1200000,"Comedian","bh_Singh@gmail.com");
+Query OK, 1 row affected (0.12 sec)
+
+mysql> insert into tblParents values(119,"Shilpa Shetty","Chennai",32,1000000,"Model","s_Shetty@gmail.com");
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into tblParents values(120,"Monika Nikalje","Ahmedabad",27,700000,"Air Hostess","m_nikalje@gmail.com");
+Query OK, 1 row affected (0.13 sec)
+
+mysql> select * from tblParents;
++-----------+-----------------+-----------+------+--------------+-------------------+----------------------+
+| Parent_Id | Parent_Name     | City      | Age  | AnnualIncome | Occupation        | Email_Id             |
++-----------+-----------------+-----------+------+--------------+-------------------+----------------------+
+|       101 | Sonali Gaikwad  | Pune      |   29 |        15000 | Service           | S_gaikwad@gmail.com  |
+|       102 | Smita Dhivar    | Mumbai    |   39 |        35000 | Designer          | Dhivar_s@gmail.com   |
+|       103 | Kiran Shah      | Banglore  |   44 |        55000 | Entrepreneur      | k_shah@gmail.com     |
+|       104 | Krupa Patel     | Surat     |   30 |        30000 | Beutician         | K_patel@gmail.com    |
+|       105 | Mohan Singh     | Shimala   |   34 |        50000 | Chef              | S_mohan@gmail.com    |
+|       106 | Vir Hattarke    | Satara    |   40 |        60000 | Data scientist    | V_Hattarke@gmail.com |
+|       107 | Manish Nagmal   | Pune      |   29 |       450000 | Manager           | N_manish@gmail.com   |
+|       108 | Surekha Ranpise | Solapur   |   40 |       400000 | Teacher           | Ss_Ranpise@gmail.com |
+|       109 | Vijay Vanjari   | Kolhapur  |   35 |       350000 | medical Assistant | v_vijay@gmail.com    |
+|       110 | Maya Alhat      | Mumbai    |   37 |       300000 | Service           | M_alhat@gmail.com    |
+|       111 | Shruti Gawade   | Banglore  |   49 |       500000 | Supervisor        | G_shruti@gmail.com   |
+|       112 | Shuruti Singhal | Delhi     |   28 |       600000 | Devloper          | S_singhal@gmail.com  |
+|       113 | Nishant Joshi   | Vadodara  |   34 |       400000 | Analytics         | n_joshi@gmail.com    |
+|       114 | Salman khan     | Chennai   |   54 |       400000 | Actor             | s_khan@gmail.com     |
+|       115 | Shrushti Tawade | Ahmedabad |   30 |      9000000 | Rapper            | S_tawade@gmail.com   |
+|       116 | Kumar Saanu     | Delhi     |   60 |      5000000 | Singer            | k_saanu@gmail.com    |
+|       117 | Manish Paul     | Ahmedabad |   43 |       700000 | Anchor            | m_paul@gmail.com     |
+|       118 | Bharati Singh   | Mumbai    |   45 |      1200000 | Comedian          | bh_Singh@gmail.com   |
+|       119 | Shilpa Shetty   | Chennai   |   32 |      1000000 | Model             | s_Shetty@gmail.com   |
+|       120 | Monika Nikalje  | Ahmedabad |   27 |       700000 | Air Hostess       | m_nikalje@gmail.com  |
++-----------+-----------------+-----------+------+--------------+-------------------+----------------------+
+20 rows in set (0.00 sec)
+
+mysql> UPDATE tblParents SET Email_Id='NA'  WHERE Parent_Id=101;
+Query OK, 1 row affected (0.08 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE tblParents SET Email_Id='NA'  WHERE Parent_Id=102;
+Query OK, 1 row affected (0.19 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql>  UPDATE tblParents SET Email_Id='NA'  WHERE Parent_Id=103;
+Query OK, 1 row affected (0.07 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql>  UPDATE tblParents SET Email_Id='NA'  WHERE Parent_Id=104;
+Query OK, 1 row affected (0.20 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql>  UPDATE tblParents SET Email_Id='NA'  WHERE Parent_Id=105;
+Query OK, 1 row affected (0.12 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql>  UPDATE tblParents SET Email_Id='NA'  WHERE Parent_Id=106;
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql>  UPDATE tblParents SET Email_Id='NA'  WHERE Parent_Id=107;
+Query OK, 1 row affected (0.07 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql>  UPDATE tblParents SET Email_Id='NA'  WHERE Parent_Id=108;
+Query OK, 1 row affected (0.12 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql>  UPDATE tblParents SET Email_Id='NA'  WHERE Parent_Id=109;
+Query OK, 1 row affected (0.12 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql>  UPDATE tblParents SET Email_Id='NA'  WHERE Parent_Id=110;
+Query OK, 1 row affected (0.19 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql>  UPDATE tblParents SET Email_Id='NA'  WHERE Parent_Id=111;
+Query OK, 1 row affected (0.12 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql>  UPDATE tblParents SET Email_Id='NA'  WHERE Parent_Id=112;
+Query OK, 1 row affected (0.18 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql>  UPDATE tblParents SET Email_Id='NA'  WHERE Parent_Id=113;
+Query OK, 1 row affected (0.12 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql>  UPDATE tblParents SET Email_Id='NA'  WHERE Parent_Id=114;
+Query OK, 1 row affected (0.12 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql>  UPDATE tblParents SET Email_Id='NA'  WHERE Parent_Id=115;
+Query OK, 1 row affected (0.12 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql>  UPDATE tblParents SET Email_Id='NA'  WHERE Parent_Id=116;
+Query OK, 1 row affected (0.12 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql>  UPDATE tblParents SET Email_Id='NA'  WHERE Parent_Id=117;
+Query OK, 1 row affected (0.12 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql>  UPDATE tblParents SET Email_Id='NA'  WHERE Parent_Id=118;
+Query OK, 1 row affected (0.13 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql>  UPDATE tblParents SET Email_Id='NA'  WHERE Parent_Id=119;
+Query OK, 1 row affected (0.07 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql>  UPDATE tblParents SET Email_Id='NA'  WHERE Parent_Id=120;
+Query OK, 1 row affected (0.11 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from tblParents;
++-----------+-----------------+-----------+------+--------------+-------------------+----------+
+| Parent_Id | Parent_Name     | City      | Age  | AnnualIncome | Occupation        | Email_Id |
++-----------+-----------------+-----------+------+--------------+-------------------+----------+
+|       101 | Sonali Gaikwad  | Pune      |   29 |        15000 | Service           | NA       |
+|       102 | Smita Dhivar    | Mumbai    |   39 |        35000 | Designer          | NA       |
+|       103 | Kiran Shah      | Banglore  |   44 |        55000 | Entrepreneur      | NA       |
+|       104 | Krupa Patel     | Surat     |   30 |        30000 | Beutician         | NA       |
+|       105 | Mohan Singh     | Shimala   |   34 |        50000 | Chef              | NA       |
+|       106 | Vir Hattarke    | Satara    |   40 |        60000 | Data scientist    | NA       |
+|       107 | Manish Nagmal   | Pune      |   29 |       450000 | Manager           | NA       |
+|       108 | Surekha Ranpise | Solapur   |   40 |       400000 | Teacher           | NA       |
+|       109 | Vijay Vanjari   | Kolhapur  |   35 |       350000 | medical Assistant | NA       |
+|       110 | Maya Alhat      | Mumbai    |   37 |       300000 | Service           | NA       |
+|       111 | Shruti Gawade   | Banglore  |   49 |       500000 | Supervisor        | NA       |
+|       112 | Shuruti Singhal | Delhi     |   28 |       600000 | Devloper          | NA       |
+|       113 | Nishant Joshi   | Vadodara  |   34 |       400000 | Analytics         | NA       |
+|       114 | Salman khan     | Chennai   |   54 |       400000 | Actor             | NA       |
+|       115 | Shrushti Tawade | Ahmedabad |   30 |      9000000 | Rapper            | NA       |
+|       116 | Kumar Saanu     | Delhi     |   60 |      5000000 | Singer            | NA       |
+|       117 | Manish Paul     | Ahmedabad |   43 |       700000 | Anchor            | NA       |
+|       118 | Bharati Singh   | Mumbai    |   45 |      1200000 | Comedian          | NA       |
+|       119 | Shilpa Shetty   | Chennai   |   32 |      1000000 | Model             | NA       |
+|       120 | Monika Nikalje  | Ahmedabad |   27 |       700000 | Air Hostess       | NA       |
++-----------+-----------------+-----------+------+--------------+-------------------+----------+
+20 rows in set (0.00 sec)
+mysql> select Count(AnnualIncome) from tblParents where AnnualIncome>600000;
++---------------------+
+| Count(AnnualIncome) |
++---------------------+
+|                   6 |
++---------------------+
+1 row in set (0.00 sec)
+mysql> select * from tblParents Where City='Ambdabad' or City='Delhi' or City='Mumbai' or City='Chennai' or City='Banglore';
++-----------+-----------------+----------+------+--------------+--------------+----------+
+| Parent_Id | Parent_Name     | City     | Age  | AnnualIncome | Occupation   | Email_Id |
++-----------+-----------------+----------+------+--------------+--------------+----------+
+|       102 | Smita Dhivar    | Mumbai   |   39 |        35000 | Designer     | NA       |
+|       103 | Kiran Shah      | Banglore |   44 |        55000 | Entrepreneur | NA       |
+|       110 | Maya Alhat      | Mumbai   |   37 |       300000 | Service      | NA       |
+|       111 | Shruti Gawade   | Banglore |   49 |       500000 | Supervisor   | NA       |
+|       112 | Shuruti Singhal | Delhi    |   28 |       600000 | Devloper     | NA       |
+|       114 | Salman khan     | Chennai  |   54 |       400000 | Actor        | NA       |
+|       116 | Kumar Saanu     | Delhi    |   60 |      5000000 | Singer       | NA       |
+|       118 | Bharati Singh   | Mumbai   |   45 |      1200000 | Comedian     | NA       |
+|       119 | Shilpa Shetty   | Chennai  |   32 |      1000000 | Model        | NA       |
++-----------+-----------------+----------+------+--------------+--------------+----------+
+9 rows in set (0.06 sec)
+mysql>  select *from tblParents WHERE AnnualIncome<500000 or Age>45;
++-----------+-----------------+----------+------+--------------+-------------------+----------+
+| Parent_Id | Parent_Name     | City     | Age  | AnnualIncome | Occupation        | Email_Id |
++-----------+-----------------+----------+------+--------------+-------------------+----------+
+|       101 | Sonali Gaikwad  | Pune     |   29 |        15000 | Service           | NA       |
+|       102 | Smita Dhivar    | Mumbai   |   39 |        35000 | Designer          | NA       |
+|       103 | Kiran Shah      | Banglore |   44 |        55000 | Entrepreneur      | NA       |
+|       104 | Krupa Patel     | Surat    |   30 |        30000 | Beutician         | NA       |
+|       105 | Mohan Singh     | Shimala  |   34 |        50000 | Chef              | NA       |
+|       106 | Vir Hattarke    | Satara   |   40 |        60000 | Data scientist    | NA       |
+|       107 | Manish Nagmal   | Pune     |   29 |       450000 | Manager           | NA       |
+|       108 | Surekha Ranpise | Solapur  |   40 |       400000 | Teacher           | NA       |
+|       109 | Vijay Vanjari   | Kolhapur |   35 |       350000 | medical Assistant | NA       |
+|       110 | Maya Alhat      | Mumbai   |   37 |       300000 | Service           | NA       |
+|       111 | Shruti Gawade   | Banglore |   49 |       500000 | Supervisor        | NA       |
+|       113 | Nishant Joshi   | Vadodara |   34 |       400000 | Analytics         | NA       |
+|       114 | Salman khan     | Chennai  |   54 |       400000 | Actor             | NA       |
+|       116 | Kumar Saanu     | Delhi    |   60 |      5000000 | Singer            | NA       |
++-----------+-----------------+----------+------+--------------+-------------------+----------+
+14 rows in set (0.00 sec)

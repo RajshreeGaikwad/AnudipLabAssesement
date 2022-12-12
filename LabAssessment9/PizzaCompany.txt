@@ -1,0 +1,103 @@
+/*Lab Assignment 9 (2)
+  @authorname :- Rajshree Gaikwad 
+  @Date :-8 december 2022
+  */
+
+mysql> create database Java1;
+Query OK, 1 row affected (0.10 sec)
+
+mysql> use java1
+Database changed
+mysql>  create table Company(C_Id int primary key not null,Company_Name varchar(40),Company_city varchar(40));
+Query OK, 0 rows affected (0.30 sec)
+
+mysql> insert into Company values(1,"Dominos","Los Angeles");
+Query OK, 1 row affected (0.07 sec)
+
+mysql> insert into Company values(2,"Pizza Hut","San Francisco");
+Query OK, 1 row affected (0.12 sec)
+
+mysql> insert into Company values(3,"Papa Johns","Fremont");
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into Company values(4 ,"Ah Pizz","San Diego");
+Query OK, 1 row affected (0.13 sec)
+
+mysql> insert into Company values(5,"Nino Pizza","Las Vegas");
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into Company values(6,"Pizzaeria","Boston");
+Query OK, 1 row affected (0.11 sec)
+
+mysql> insert into Company values(7," chuck a cheese","Chicago");
+Query OK, 1 row affected (0.12 sec)
+
+mysql> select *from Company;
++------+-----------------+---------------+
+| C_Id | Company_Name    | Company_city  |
++------+-----------------+---------------+
+|    1 | Dominos         | Los Angeles   |
+|    2 | Pizza Hut       | San Francisco |
+|    3 | Papa Johns      | Fremont       |
+|    4 | Ah Pizz         | San Diego     |
+|    5 | Nino Pizza      | Las Vegas     |
+|    6 | Pizzaeria       | Boston        |
+|    7 |  chuck a cheese | Chicago       |
++------+-----------------+---------------+
+7 rows in set (0.00 sec)
+
+mysql> create Table Item(Item_Id int primary key not null,Item_Name varchar(40) ,Units_Sold int,C_Id int not null,foreign key(C_Id) references Company(C_Id));
+Query OK, 0 rows affected (0.28 sec)
+
+mysql> insert into Item values(1,"Large Pizza",5,2);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into Item values(2,"Garlic Knots",6,3);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into Item values(3,"Large Pizza",3,3);
+Query OK, 1 row affected (0.12 sec)
+
+mysql> insert into Item values(4,"Medium Pizza",8,4);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into Item values(5,"BreadSticks",7,1);
+Query OK, 1 row affected (0.12 sec)
+
+mysql> insert into Item values(6,"Medium Pizza",11,1);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into Item values(7,"Small Pizza",9,6);
+Query OK, 1 row affected (0.13 sec)
+
+mysql> insert into Item values(8,"Small Pizza",6,7);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select *from Item;
++---------+--------------+------------+------+
+| Item_Id | Item_Name    | Units_Sold | C_Id |
++---------+--------------+------------+------+
+|       1 | Large Pizza  |          5 |    2 |
+|       2 | Garlic Knots |          6 |    3 |
+|       3 | Large Pizza  |          3 |    3 |
+|       4 | Medium Pizza |          8 |    4 |
+|       5 | BreadSticks  |          7 |    1 |
+|       6 | Medium Pizza |         11 |    1 |
+|       7 | Small Pizza  |          9 |    6 |
+|       8 | Small Pizza  |          6 |    7 |
++---------+--------------+------------+------+
+8 rows in set (0.00 sec)
+mysql>  select * from Company as C Inner join Item  as I on C.C_Id=I.C_Id;
++------+-----------------+---------------+---------+--------------+------------+------+
+| C_Id | Company_Name    | Company_city  | Item_Id | Item_Name    | Units_Sold | C_Id |
++------+-----------------+---------------+---------+--------------+------------+------+
+|    1 | Dominos         | Los Angeles   |       5 | BreadSticks  |          7 |    1 |
+|    1 | Dominos         | Los Angeles   |       6 | Medium Pizza |         11 |    1 |
+|    2 | Pizza Hut       | San Francisco |       1 | Large Pizza  |          5 |    2 |
+|    3 | Papa Johns      | Fremont       |       2 | Garlic Knots |          6 |    3 |
+|    3 | Papa Johns      | Fremont       |       3 | Large Pizza  |          3 |    3 |
+|    4 | Ah Pizz         | San Diego     |       4 | Medium Pizza |          8 |    4 |
+|    6 | Pizzaeria       | Boston        |       7 | Small Pizza  |          9 |    6 |
+|    7 |  chuck a cheese | Chicago       |       8 | Small Pizza  |          6 |    7 |
++------+-----------------+---------------+---------+--------------+------------+------+
+8 rows in set (0.00 sec)
